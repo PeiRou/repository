@@ -1,19 +1,39 @@
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
-	Local $x = 917
-	Local $y = 119
-	Local $ac0[3] = ["pumpk800511", "pum800511", "pumk800511"]
-	Local $lv0[3] = [ 1, 1, 1]
-	Local $ac1[3] = ["pud800511", "pue800511", "pub800511"]
-	Local $lv1[3] = [ 1, 1, 0]
-	Local $ac2[3] = ["phephe0513", "phapha0513","s793156529"]
-	Local $lv2[3] = [ 1, 1, 1]
-	Local $ac3[3] = ["jeica7799", "jeica0909","pug800511"]
-	Local $lv3[3] = [ 1, 1, 0]
-	;;Local $aArray[3] = [$ac1[0], $ac1[1], $ac1[2]]
-	;;Local $aArray[3] = [$ac2[0], $ac2[1], $ac2[2]]
-	Local $aArrayAc[12] = [$ac0[0],$ac0[1],$ac0[2],$ac1[0],$ac1[1],$ac1[2],$ac2[0],$ac2[1],$ac2[2],$ac3[0], $ac3[1], $ac3[2]]
-	Local $aArrayLv[12] = [$lv0[0],$lv0[1],$lv0[2],$lv1[0],$lv1[1],$lv1[2],$lv2[0],$lv2[1],$lv2[2],$lv3[0], $lv3[1], $lv3[2]]
+	Local $x = 572
+	Local $y = 54
+	Local $xTempAct = 832
+	Local $yTempAct = 94
+	
+	;;帳號
+	Local $aArrayAc[19] = [ _
+	  "pumpk800511", "pum800511", "pumk800511" _
+	, "pud800511", "pue800511", "pub800511" _
+	, "phephe0513", "phapha0513","s793156529" _
+	, "jeica7799", "jeica0909","pug800511" _
+	, "puk800511", "puck800511", "pud800511" _
+	, "pup800511", "westdoor1234" ,"pun800511" _
+	, "green79315"]
+	
+	;;等級是否到達航海
+	Local $aArrayLv[19] = [ _
+	  1, 1, 1 _
+	, 1, 1, 0 _
+	, 1, 1, 1 _
+	, 1, 1, 0 _
+	, 1, 1, 1 _
+	, 1, 0, 0 _
+	, 0]
+	
+	;;是否簽到公會
+	Local $aArrayGuild[19] = [ _
+	  1, 1, 1 _
+	, 1, 1, 1 _
+	, 1, 1, 1 _
+	, 1, 1, 1 _
+	, 1, 1, 1 _
+	, 1, 1, 0 _
+	, 0]
 
 Local $i = 0
 
@@ -29,9 +49,9 @@ Exit
 EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
-	Local $j = 0
-	while $j < 12
-		control(1,$aArrayAc[$j],1,$aArrayLv[$j]) ;;總控制
+	Local $j = 1
+	while $j < 19
+		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
 		$j = $j + 1
 	WEnd
@@ -41,23 +61,28 @@ EndFunc
 Func HotKey_F9()	
 	Local $j = 1
 	while $j < 2
-		control(0,$aArrayAc[$j],1,$aArrayLv[$j]) ;;總控制
+		control(1,0,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		$j = $j + 1
 	WEnd
 	_Exit()
 EndFunc
 
 ;;若有需要給參數的,1=true,0=false
-Func control(ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
+Func control(ByRef $isTempActivity,ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 ;;總控制
-
+	
+	if $isTempActivity >0 Then
+		tempActivity()
+	EndIf
+	;;短期暫時活動
+	
 	if $isLogin > 0 Then
 		changeAccount($acc)
 	EndIf
-	;;登帳號
+	;;登帳號	
 	
 	if $isGuild > 0 Then
-		guild(1,0,0)
+		guild(1,1,0)
 		;;guild(1,1,1)
 	EndIf	
 	;;公會
@@ -85,6 +110,27 @@ Func control(ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 	;;任務
 	logout() 
 	;;退出登錄	
+EndFunc
+
+Func tempActivity()
+;;短期暫時活動
+	MsgBox($MB_SYSTEMMODAL, "Title", "暫時短期活動", 0.5)
+	sleep(800)
+	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
+	sleep(3000)	
+	send("{z}")
+	sleep(2000)
+	send("{6}")
+	sleep(1000)
+	send("{tab}")
+	sleep(1000)
+	send("{tab}")
+	sleep(1000)
+	send("{enter}")
+	sleep(1000)
+	send("{q}")
+	sleep(1000)
+	MouseClick($MOUSE_CLICK_LEFT, $xTempAct, $yTempAct, 1)
 EndFunc
 
 Func exchangeDiamond()
@@ -215,9 +261,9 @@ Func changeAccount(ByRef $acc)
 	send("^a")
 	sleep(800)
 	send("+a7789123")
-	sleep(800)
-	local $yy = $y + 100
-	MouseClick($MOUSE_CLICK_LEFT, $x, $yy, 1)
+	sleep(800) 
+	local $yy = $y +100
+	MouseClick($MOUSE_CLICK_LEFT, $x, $yy , 1)
 	sleep(800)
 	send("{n}")
 	sleep(4800)
