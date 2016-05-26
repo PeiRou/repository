@@ -38,6 +38,7 @@ while $i = 0
 HotKeySet("{F1}", "_Exit")
 HotKeySet("{F8}", "HotKey_F8")
 HotKeySet("{F9}", "HotKey_F9")
+HotKeySet("{F10}", "HotKey_F10")
 WEnd
 
 Func _Exit()
@@ -46,7 +47,7 @@ Exit
 EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
-	Local $j = 3
+	Local $j = 14
 	while $j < 20
 		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
@@ -59,6 +60,15 @@ Func HotKey_F9()
 	Local $j = 1
 	while $j < 2
 		control(0,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
+		$j = $j + 1
+	WEnd
+	_Exit()
+EndFunc
+
+Func HotKey_F10()	
+	Local $j = 1
+	while $j < 2
+		control(0,0,0,0,$aArrayLv[$j]) ;;總控制
 		$j = $j + 1
 	WEnd
 	_Exit()
@@ -302,7 +312,7 @@ Func revMessage()
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
 	send("{d}")
-	sleep(800)
+	sleep(1500)
 	send("{b}")
 	sleep(800)
 	send("{e}")
