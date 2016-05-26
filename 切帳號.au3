@@ -1,39 +1,36 @@
+#include "position.au3"
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
-	Local $x = 572
-	Local $y = 54
-	Local $xTempAct = 832
-	Local $yTempAct = 94
-	
+
 	;;帳號
-	Local $aArrayAc[19] = [ _
-	  "pumpk800511", "pum800511", "pumk800511" _
+	Local $aArrayAc[20] = [ _
+	  "pump800511", "pumpk800511", "pum800511" _
 	, "pud800511", "pue800511", "pub800511" _
 	, "phephe0513", "phapha0513","s793156529" _
 	, "jeica7799", "jeica0909","pug800511" _
 	, "puk800511", "puck800511", "pud800511" _
 	, "pup800511", "westdoor1234" ,"pun800511" _
-	, "green79315"]
+	, "green79315", "pumk800511" ]
 	
 	;;等級是否到達航海
-	Local $aArrayLv[19] = [ _
+	Local $aArrayLv[20] = [ _
 	  1, 1, 1 _
 	, 1, 1, 0 _
 	, 1, 1, 1 _
 	, 1, 1, 0 _
 	, 1, 1, 1 _
 	, 1, 0, 0 _
-	, 0]
+	, 0, 1]
 	
 	;;是否簽到公會
-	Local $aArrayGuild[19] = [ _
+	Local $aArrayGuild[20] = [ _
 	  1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 0 _
-	, 0]
+	, 0, 1]
 
 Local $i = 0
 
@@ -49,8 +46,8 @@ Exit
 EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
-	Local $j = 1
-	while $j < 19
+	Local $j = 3
+	while $j < 20
 		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
 		$j = $j + 1
@@ -61,25 +58,25 @@ EndFunc
 Func HotKey_F9()	
 	Local $j = 1
 	while $j < 2
-		control(1,0,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
+		control(0,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		$j = $j + 1
 	WEnd
 	_Exit()
 EndFunc
 
 ;;若有需要給參數的,1=true,0=false
-Func control(ByRef $isTempActivity,ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
+Func control(ByRef $isLogin,ByRef $isTempActivity,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 ;;總控制
-	
-	if $isTempActivity >0 Then
-		tempActivity()
-	EndIf
-	;;短期暫時活動
 	
 	if $isLogin > 0 Then
 		changeAccount($acc)
 	EndIf
 	;;登帳號	
+	
+	if $isTempActivity >0 Then
+		tempActivity()
+	EndIf
+	;;短期暫時活動
 	
 	if $isGuild > 0 Then
 		guild(1,1,0)
@@ -121,7 +118,7 @@ Func tempActivity()
 	send("{z}")
 	sleep(2000)
 	send("{6}")
-	sleep(1000)
+	sleep(2000)
 	send("{tab}")
 	sleep(1000)
 	send("{tab}")
@@ -167,7 +164,7 @@ Func shop()
 	send("{v}")
 	sleep(1500)
 	send("{k}") ;;暫不購買
-	sleep(1200)
+	sleep(1800)
 	send("{y}") ;;暫不購買的確定
 	sleep(800)
 	send("{f}")
