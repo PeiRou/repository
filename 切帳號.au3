@@ -3,34 +3,34 @@
 #include <MsgBoxConstants.au3>
 
 	;;帳號
-	Local $aArrayAc[20] = [ _
+	Local $aArrayAc[19] = [ _
 	  "pump800511", "pumpk800511", "pum800511" _
-	, "pud800511", "pue800511", "pub800511" _
+	, "pumk800511", "pue800511", "pub800511" _
 	, "phephe0513", "phapha0513","s793156529" _
 	, "jeica7799", "jeica0909","pug800511" _
 	, "puk800511", "puck800511", "pud800511" _
 	, "pup800511", "westdoor1234" ,"pun800511" _
-	, "green79315", "pumk800511" ]
+	, "green79315" ]
 	
 	;;等級是否到達航海
-	Local $aArrayLv[20] = [ _
+	Local $aArrayLv[19] = [ _
 	  1, 1, 1 _
 	, 1, 1, 0 _
 	, 1, 1, 1 _
 	, 1, 1, 0 _
 	, 1, 1, 1 _
 	, 1, 0, 0 _
-	, 1, 1]
+	, 1]
 	
 	;;是否簽到公會
-	Local $aArrayGuild[20] = [ _
+	Local $aArrayGuild[19] = [ _
 	  1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 1, 0 _
-	, 0, 1]
+	, 0]
 
 Local $i = 0
 
@@ -47,8 +47,8 @@ Exit
 EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
-	Local $j = 14
-	while $j < 20
+	Local $j = 12
+	while $j < 19
 		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
 		$j = $j + 1
