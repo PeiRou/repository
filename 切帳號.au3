@@ -48,8 +48,8 @@ EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
 
-	Local $j = 17
-	while $j < 20
+	Local $j = 1
+	while $j < 19
 		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
 		$j = $j + 1
@@ -303,7 +303,22 @@ Func sendFriend()
 	sleep(5000)
 	send("{e}")
 	sleep(1000)
+	chkFriend()
 	send("{esc}")
+EndFunc
+
+Func chkFriend()
+;;確認好友
+	MsgBox($MB_SYSTEMMODAL, "Title", "確認好友", 0.5)
+	sleep(800)
+	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
+	sleep(2000)
+	send("{m}")
+	sleep(1000)
+	send("{2}")
+	sleep(1000)
+	send("{y}")
+	sleep(1000)
 EndFunc
 
 Func revMessage()
