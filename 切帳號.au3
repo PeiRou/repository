@@ -10,14 +10,15 @@
 	, "jeica7799", "jeica0909","pug800511" _
 	, "puk800511", "puck800511", "pud800511" _
 	, "pup800511", "westdoor1234" ,"pun800511" _
-	, "green79315" ]
+	, "green79315" _
+	]
 	
 	;;等級是否到達航海
 	Local $aArrayLv[19] = [ _
 	  1, 1, 1 _
 	, 1, 1, 0 _
 	, 1, 1, 1 _
-	, 1, 1, 0 _
+	, 1, 1, 1 _
 	, 1, 1, 1 _
 	, 1, 0, 0 _
 	, 1]
@@ -48,7 +49,7 @@ EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
 
-	Local $j = 1
+	Local $j = 2
 	while $j < 19
 		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
@@ -244,6 +245,7 @@ Func thrownDice()
 	send("{esc}")
 	sleep(1000)
 	send("{esc}")
+	sleep(800)
 EndFunc
 
 Func logout()
@@ -305,6 +307,7 @@ Func sendFriend()
 	sleep(1000)
 	chkFriend()
 	send("{esc}")
+	sleep(800)
 EndFunc
 
 Func chkFriend()
@@ -358,6 +361,7 @@ Func revMessage()
 	send("{e}")
 	sleep(1000)
 	send("{esc}")
+	sleep(800)
 EndFunc
 
 Func mission()
@@ -385,6 +389,7 @@ Func mission()
 	send("{e}")
 	sleep(1200)
 	send("{esc}")
+	sleep(800)
 EndFunc
 
 
@@ -408,6 +413,7 @@ Func guild(ByRef $wsh,ByRef $siW,ByRef $devAtk)
 	EndIf		
 	sleep(1800)
 	send("{esc}")
+	sleep(2000)
 EndFunc
 
 Func signaWard()
