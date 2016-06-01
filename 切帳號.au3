@@ -1,11 +1,11 @@
 #include "position.au3"
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
-	;;冰封帳號:, "green79315", "jeica7799", "pumk800511"
+	;;冰封帳號:, "green79315", "jeica7799", "pumk800511", "pub800511"
 	;;帳號
-	Local $aArrayAc[16] = [ _
+	Local $aArrayAc[15] = [ _
 	  "pump800511", "pumpk800511", "pum800511" _
-	, "pue800511", "pub800511" _
+	, "pue800511" _
 	, "phephe0513", "phapha0513","s793156529" _
 	, "jeica0909","pug800511" _
 	, "puk800511", "puck800511", "pud800511" _
@@ -13,9 +13,9 @@
 	]
 	
 	;;等級是否到達航海
-	Local $aArrayLv[16] = [ _
+	Local $aArrayLv[15] = [ _
 	  1, 1, 1 _
-	, 1, 0 _
+	, 1 _
 	, 1, 1, 1 _
 	, 1, 1 _
 	, 1, 1, 1 _
@@ -23,9 +23,9 @@
 	]
 	
 	;;是否簽到公會
-	Local $aArrayGuild[16] = [ _
+	Local $aArrayGuild[15] = [ _
 	  1, 1, 1 _
-	, 1, 1 _
+	, 1 _
 	, 1, 1, 1 _
 	, 1, 1 _
 	, 1, 1, 1 _
@@ -49,8 +49,8 @@ EndFunc ;==> _Exit()
 Func HotKey_F8()	
 
 	Local $j = 1
-	while $j < 16
-		control(1,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
+	while $j < 15
+		control(1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
 		$j = $j + 1
 	WEnd
@@ -60,7 +60,7 @@ EndFunc
 Func HotKey_F9()	
 	Local $j = 1
 	while $j < 2
-		control(0,1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
+		control(0,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		$j = $j + 1
 	WEnd
 	_Exit()
@@ -69,14 +69,15 @@ EndFunc
 Func HotKey_F10()	
 	Local $j = 1
 	while $j < 2
-		control(0,0,0,0,$aArrayLv[$j]) ;;總控制
+		control(0,0,0,$aArrayLv[$j]) ;;總控制
 		$j = $j + 1
 	WEnd
 	_Exit()
 EndFunc
 
 ;;若有需要給參數的,1=true,0=false
-Func control(ByRef $isLogin,ByRef $isTempActivity,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
+;;Func control(ByRef $isLogin,ByRef $isTempActivity,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
+Func control(ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 ;;總控制
 	
 	if $isLogin > 0 Then
@@ -84,10 +85,10 @@ Func control(ByRef $isLogin,ByRef $isTempActivity,ByRef $acc,ByRef $isGuild,ByRe
 	EndIf
 	;;登帳號	
 	
-	if $isTempActivity >0 Then
-		tempActivity()
-	EndIf
-	;;短期暫時活動
+	; if $isTempActivity >0 Then
+		; tempActivity()
+	; EndIf
+	; ;;短期暫時活動
 	
 	if $isGuild > 0 Then
 		guild(1,1,0)
