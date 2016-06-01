@@ -1,36 +1,35 @@
 #include "position.au3"
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
-	;;冰封帳號:, "green79315", "jeica7799", "pumk800511", "pub800511"
+	;;冰封帳號:, "green79315", "jeica7799", "pumk800511"
+	;;         , "pub800511", "pud800511", "pue800511"
+	;;         , "phapha0513"
 	;;帳號
-	Local $aArrayAc[15] = [ _
+	Local $aArrayAc[12] = [ _
 	  "pump800511", "pumpk800511", "pum800511" _
-	, "pue800511" _
-	, "phephe0513", "phapha0513","s793156529" _
+	, "phephe0513","s793156529" _
 	, "jeica0909","pug800511" _
-	, "puk800511", "puck800511", "pud800511" _
-	, "pup800511", "westdoor1234" ,"pun800511" _
-	]
+	, "puk800511", "puck800511" _
+	, "pup800511", "westdoor1234"  _
+	,"pun800511"]
 	
 	;;等級是否到達航海
-	Local $aArrayLv[15] = [ _
+	Local $aArrayLv[12] = [ _
 	  1, 1, 1 _
-	, 1 _
-	, 1, 1, 1 _
 	, 1, 1 _
-	, 1, 1, 1 _
-	, 1, 0, 0 _
-	]
+	, 1, 1 _
+	, 1, 1 _
+	, 1, 0 _
+	, 1]
 	
 	;;是否簽到公會
-	Local $aArrayGuild[15] = [ _
+	Local $aArrayGuild[12] = [ _
 	  1, 1, 1 _
-	, 1 _
-	, 1, 1, 1 _
+	, 1, 1_
 	, 1, 1 _
-	, 1, 1, 1 _
-	, 1, 1, 0 _
-	]
+	, 1, 1 _
+	, 1, 1_
+	, 1]
 
 Local $i = 0
 
@@ -48,8 +47,8 @@ EndFunc ;==> _Exit()
 
 Func HotKey_F8()	
 
-	Local $j = 1
-	while $j < 15
+	Local $j = 0
+	while $j < 12
 		control(1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
 		;;control(是否要登帳號,帳號,是否要點公會,是否要航海)
 		$j = $j + 1
