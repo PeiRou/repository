@@ -1,3 +1,4 @@
+#include "position.au3"
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
 
@@ -26,7 +27,7 @@ Local $j = 0
 $j = $j -70
 	while $j < 20
 		;;選再來一次的地方
-		MouseClick($MOUSE_CLICK_LEFT, 1040, 234, 1)
+		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		send("{r}")
 		sleep(5000)
 		send("{e}")
@@ -71,7 +72,7 @@ Func HotKey_F2()
 ;;故事_一直往下一關
 	Local $c = 0
 	while $c < 320
-		MouseClick($MOUSE_CLICK_LEFT, 1040, 234, 1)
+		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		sleep(2000)
 		send("{n}")
 		sleep(4000)
@@ -107,7 +108,7 @@ Func HotKey_F3()
 ;;魔王之塔
 	Local $l = 0
 	while $l < 10
-		MouseClick($MOUSE_CLICK_LEFT, 540, 234, 1)
+		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		sleep(2000)
 		send("{space}")
 		sleep(75000)
@@ -196,7 +197,7 @@ Func HotKey_F8()
 		sleep(1000)
 		send("^{v}")
 		sleep(1000)
-		MouseClick($MOUSE_CLICK_LEFT, 1170, 686, 1)
+		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		sleep(4000)		
 		send("{i}")
 		sleep(1000)		
