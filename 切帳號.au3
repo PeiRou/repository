@@ -11,7 +11,7 @@
 	, "jeica0909","pug800511" _
 	, "puk800511", "puck800511" _
 	, "pup800511", "westdoor1234"  _
-	,"pun800511"]
+	, "pun800511"]
 	
 	;;等級是否到達航海
 	Local $aArrayLv[12] = [ _
@@ -170,12 +170,11 @@ Func shop()
 	MsgBox($MB_SYSTEMMODAL, "Title", "商店", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
-	;;send("{esc}")	
-	sleep(3000)	
+	sleep(4500)	
 	send("{v}")
 	sleep(1500)
-	send("{k}") ;;暫不購買
-	sleep(1800)
+	send("{esc}") ;;暫不購買
+	sleep(2000)
 	send("{y}") ;;暫不購買的確定
 	sleep(800)
 	send("{f}")
