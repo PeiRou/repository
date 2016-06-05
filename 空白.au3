@@ -1,4 +1,4 @@
-﻿#include "position.au3"
+#include "position.au3"
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
 
@@ -6,7 +6,7 @@ Local $i = 0
 
 while $i = 0
 HotKeySet("{ESC}", "_Exit") ;If you press ESC the script will stop
-HotKeySet("{F1}", "HotKey_F1") ;;種菜
+HotKeySet("{F1}", "HotKey_F1") ;;
 HotKeySet("{F2}", "HotKey_F2") 
 HotKeySet("{F3}", "HotKey_F3") 
 HotKeySet("{F4}", "HotKey_F4") 
@@ -22,31 +22,13 @@ Exit
 EndFunc ;==> _Exit() 
 
 Func HotKey_F1()
-;;種菜
+;;
 Local $j = 0
-	while $j < 120
-		;;選視窗
+$j = $j -70
+	while $j < 20
+		;;?I??BS????
 		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		
-		Local $k = 1		
-		while $k < 6
-			send($k)
-			sleep(500)
-		$k = $k +1
-		WEnd
-		
-		Local $c = 1		
-		while $c < 6
-			send($c)
-			sleep(500)
-			send($c)
-			sleep(500)
-			send("{g}")
-			sleep(500)
-			send("{u}")						
-		$c = $c +1
-		WEnd
-		sleep(59000)
 		$j = $j +1  
 	WEnd
 _Exit()
