@@ -24,7 +24,7 @@ EndFunc ;==> _Exit()
 Func HotKey_F1()
 ;;種菜
 Local $j = 0
-	while $j < 120
+	while $j < 840
 		;;選視窗
 		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		
@@ -41,12 +41,48 @@ Local $j = 0
 			sleep(500)
 			send($c)
 			sleep(500)
-			send("{g}")
+			send("{m}")
 			sleep(500)
-			send("{u}")						
+			send("{T}")						
 		$c = $c +1
 		WEnd
-		sleep(59000)
+		sleep(1200)
+		send("{R}")
+		sleep(800)
+		send("V}")
+		sleep(800)
+		send("{y}")
+		sleep(800)
+		send("{V}")
+		sleep(800)
+		send("{T}")
+		sleep(800)
+		send("N}")
+		sleep(800)
+		send("{O}")
+		sleep(800)
+		send("N}")
+		sleep(800)
+		send("{P}")
+		sleep(800)
+		send("N}")
+		sleep(800)
+		send("{J}")
+		sleep(800)
+		send("N}")
+		sleep(800)
+		send("{K}")
+		sleep(800)
+		send("N}")
+		sleep(800)
+		send("{L}")
+		sleep(800)
+		send("N}")
+		sleep(800)
+		send("{I}")
+		sleep(800)
+		send("M}")
+		sleep(50000)
 		$j = $j +1  
 	WEnd
 _Exit()
@@ -59,7 +95,7 @@ Func HotKey_F2()
 		
 		$c = $c +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
 
 Func HotKey_F3()
@@ -69,7 +105,7 @@ Func HotKey_F3()
 		
 		$l = $l +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
 Func HotKey_F4()
 ;;
@@ -78,7 +114,7 @@ Func HotKey_F4()
 		
 		$l = $l +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
 
 Func HotKey_F5()
@@ -88,7 +124,7 @@ Func HotKey_F5()
 		
 		$h = $h +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
 
 Func HotKey_F6()
@@ -98,7 +134,7 @@ Func HotKey_F6()
 		
 		$h = $h +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
 
 Func HotKey_F7()
@@ -108,7 +144,7 @@ Func HotKey_F7()
 		
 		$h = $h +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
 
 Func HotKey_F8()
@@ -118,5 +154,5 @@ Func HotKey_F8()
 		
 		$h = $h +1  
 	WEnd
-	_Exit()
+	send("{esc}")
 EndFunc
