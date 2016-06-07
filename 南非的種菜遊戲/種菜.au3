@@ -29,14 +29,14 @@ Local $j = 0
 		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 		
 		Local $k = 1		
-		while $k < 6
+		while $k < 7
 			send($k)
 			sleep(500)
 		$k = $k +1
 		WEnd
 		
 		Local $c = 1		
-		while $c < 6
+		while $c < 7
 			send($c)
 			sleep(500)
 			send($c)
