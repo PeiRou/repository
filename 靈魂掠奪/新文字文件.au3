@@ -11,7 +11,7 @@ HotKeySet("{F2}", "HotKey_F2") ;;故事_一直往下一關
 HotKeySet("{F3}", "HotKey_F3") ;;魔王之塔
 HotKeySet("{F4}", "HotKey_F4") ;;競技場
 HotKeySet("{F5}", "HotKey_F5") ;;次元之門
-HotKeySet("{F6}", "HotKey_F6") ;;掃蕩	
+HotKeySet("{F6}", "HotKey_F6") ;;掃蕩
 HotKeySet("{F7}", "HotKey_F7") ;;短暫活動
 HotKeySet("{F8}", "HotKey_F8") ;;加好友
 WEnd
@@ -19,7 +19,7 @@ WEnd
 Func _Exit()
 $i = 1
 Exit
-EndFunc ;==> _Exit() 
+EndFunc ;==> _Exit()
 
 Func HotKey_F1()
 ;;故事_重複
@@ -48,13 +48,13 @@ $j = $j -70
 		sleep(25000)
 		;;選最左邊的牌
 		send("{1}")
-		
+
 		MouseMove(700, 200, 1)
 		sleep(20000)
 		;;選中間的牌
 		send("{2}")
 		sleep(1000)
-		send("{space}")		
+		send("{space}")
 		sleep(20000)
 		MouseMove(900, 200, 1)
 		sleep(30000)
@@ -63,7 +63,7 @@ $j = $j -70
 				$j = 0
 			WEnd
 		send("{c}")
-		$j = $j +1  
+		$j = $j +1
 	WEnd
 send("{esc}")
 EndFunc
@@ -99,7 +99,7 @@ Func HotKey_F2()
 			$kk = $kk + 1
 		WEnd
 		sleep(30000)
-		$c = $c +1  
+		$c = $c +1
 	WEnd
 	send("{esc}")
 EndFunc
@@ -120,7 +120,7 @@ Func HotKey_F3()
 		send("{o}")
 		sleep(4000)
 		send("{e}")
-		$l = $l +1  
+		$l = $l +1
 	WEnd
 	send("{esc}")
 EndFunc
@@ -132,15 +132,15 @@ Func HotKey_F4()
 		sleep(2000)
 		send("{s}")
 		sleep(45000)
-		send("{space}")
+		send("{0}")
 		sleep(6000)
-		$l = $l +1  
+		$l = $l +1
 	WEnd
 	send("{esc}")
 EndFunc
 
 Func HotKey_F5()
-;;次元之門	
+;;次元之門
 	Local $h = 0
 	while $h < 8
 		send("{r}")
@@ -149,18 +149,18 @@ Func HotKey_F5()
 		sleep(25000)
 		send("{2}")
 		sleep(20000)
-		$h = $h +1  
+		$h = $h +1
 	WEnd
 	send("{esc}")
 EndFunc
 
 Func HotKey_F6()
-;;掃蕩	
+;;掃蕩
 	Local $h = 0
 	while $h < 50
 		send("{p}")
 		sleep(5800)
-		$h = $h +1  
+		$h = $h +1
 	WEnd
 	send("{esc}")
 EndFunc
@@ -175,7 +175,7 @@ Func HotKey_F7()
 		sleep(600)
 		send("{3}")
 		sleep(600)
-		$h = $h +1  
+		$h = $h +1
 	WEnd
 	send("{esc}")
 EndFunc
@@ -193,19 +193,21 @@ Func HotKey_F8()
 		sleep(1000)
 		send("!{tab}")
 		sleep(1000)
-		send("{0}")
+		send("{7}")
 		sleep(1000)
 		send("^{v}")
 		sleep(1000)
-		MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
-		sleep(4000)		
+		send("{tab}")
+		sleep(2000)
+		send("{enter}")
+		sleep(4000)
 		send("{i}")
-		sleep(1000)		
+		sleep(1000)
 		send("{y}")
 		sleep(2000)
 		send("{e")
 		sleep(1000)
-		$h = $h +1  
+		$h = $h +1
 	WEnd
 	send("{esc}")
 EndFunc
