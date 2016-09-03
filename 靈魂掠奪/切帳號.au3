@@ -12,7 +12,7 @@
 	, "jeica0909" , "ma510909" _
 	, "puck800511" _
 	, "pun800511"]
-	
+
 	;;等級是否到達航海
 	Local $aArrayLv[9] = [ _
 	  1, 1, 1 _
@@ -20,7 +20,7 @@
 	, 1, 0 _
 	, 1 _
 	, 1]
-	
+
 	;;是否簽到公會
 	Local $aArrayGuild[9] = [ _
 	  1, 1, 1 _
@@ -36,6 +36,7 @@ HotKeySet("{F1}", "_Exit")
 HotKeySet("{F8}", "HotKey_F8")
 HotKeySet("{F9}", "HotKey_F9")
 HotKeySet("{F10}", "HotKey_F10")
+HotKeySet("{F7}", "HotKey_F7")
 WEnd
 
 Func _Exit()
@@ -43,7 +44,7 @@ $i = 1
 Exit
 EndFunc ;==> _Exit()
 
-Func HotKey_F8()	
+Func HotKey_F8()
 
 	Local $j = 0
 	while $j < 9
@@ -54,7 +55,7 @@ Func HotKey_F8()
 	_Exit()
 EndFunc
 
-Func HotKey_F9()	
+Func HotKey_F9()
 	Local $j = 1
 	while $j < 2
 		control(0,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;總控制
@@ -63,10 +64,19 @@ Func HotKey_F9()
 	_Exit()
 EndFunc
 
-Func HotKey_F10()	
+Func HotKey_F10()
 	Local $j = 1
 	while $j < 2
-		control(0,0,0,$aArrayLv[$j]) ;;總控制
+		control(0,0,1,$aArrayLv[$j]) ;;總控制
+		$j = $j + 1
+	WEnd
+	_Exit()
+ EndFunc
+
+ Func HotKey_F7()
+	Local $j = 1
+	while $j < 2
+		control(0,0,0,1) ;;總控制
 		$j = $j + 1
 	WEnd
 	_Exit()
@@ -76,46 +86,46 @@ EndFunc
 ;;Func control(ByRef $isLogin,ByRef $isTempActivity,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 Func control(ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 ;;總控制
-	
+
 	if $isLogin > 0 Then
 		changeAccount($acc)
 	EndIf
-	;;登帳號	
-	
+	;;登帳號
+
 	; if $isTempActivity >0 Then
 		; tempActivity()
 	; EndIf
 	; ;;短期暫時活動
-	
+
 	if $isGuild > 0 Then
 		;;guild(1,1,0)
 		guild(1,1,1)
-	EndIf	
+	EndIf
 	;;公會
 		;;參數1=敬拜,
 		;;參數2=領取簽到獎勵,
 		;;參數3=魔王攻城
-	
+
 	if $isVsTral > 0 Then
-		visitTravel()
-	EndIf	
+		;visitTravel()
+	EndIf
 	;;阿爾梅斯探險
-		
-	shop()
-	;;商店	
-	
-	exchangeDiamond()
+
+	;shop()
+	;;商店
+
+	;exchangeDiamond()
 	;;兌換鑽石
-	sendFriend() 
+	sendFriend()
 	;;發送幸運草給朋友
 	thrownDice()
 	;;甩骰子
-	revMessage() 
+	revMessage()
 	;;領取訊息
-	mission() 
+	;;mission()
 	;;任務
-	logout() 
-	;;退出登錄	
+	;;logout()
+	;;退出登錄
 EndFunc
 
 Func tempActivity()
@@ -123,7 +133,7 @@ Func tempActivity()
 	MsgBox($MB_SYSTEMMODAL, "Title", "暫時短期活動", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
-	sleep(3000)	
+	sleep(3000)
 	send("{z}")
 	sleep(2000)
 	send("{6}")
@@ -145,12 +155,12 @@ Func exchangeDiamond()
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	;;send("{space}")
-	sleep(3000)	
+	sleep(3000)
 	send("{r}")
 	sleep(800)
 	send("{l}")
 	sleep(1500)
-	send("{0}")
+	send("{7}")
 	sleep(1500)
 	send("{e}")
 	sleep(1500)
@@ -168,14 +178,12 @@ Func shop()
 	MsgBox($MB_SYSTEMMODAL, "Title", "商店", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
-	sleep(4500)	
+	sleep(4500)
 	send("{v}")
 	sleep(1500)
-	send("{esc}") ;;暫不購買
-	sleep(2000)
-	send("{y}") ;;暫不購買的確定
-	sleep(800)
-	send("{f}")
+	send("{z}")
+	sleep(1000)
+	send("{g}")
 	sleep(800)
 	send("{y}")
 	sleep(1000)
@@ -191,9 +199,9 @@ Func visitTravel()
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(800)
 	send("{r}")
-	sleep(800)
+	sleep(1500)
 	send("{s}")
-	sleep(1000)
+	sleep(2000)
 	vsTraCycle("左上角","{2}") ;;左上角
 	vsTraCycle("右上角","{3}") ;;右上角
 	vsTraCycle("左下角","{c}") ;;左下角
@@ -207,17 +215,17 @@ Func vsTraCycle(ByRef $showText,ByRef $posit)
 ;;探險一個循環
 	MsgBox($MB_SYSTEMMODAL, "Title", $showText, 0.5)
 	sleep(800)
-	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
+	;MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
 	send($posit)
 	sleep(3000)
 	send("{o}") ;;探險獎勵確認
-	sleep(800)	
+	sleep(800)
 	send($posit)
 	sleep(800)
 	send("{x}")
 	sleep(800)
-	send("{v}")		
+	send("{v}")
 	send("{e}") ;;沒有六星的探險
 	sleep(1800)
 EndFunc
@@ -256,7 +264,7 @@ EndFunc
 
 Func changeAccount(ByRef $acc)
 ;;換帳號
-	send("{0}")
+	send("{7}")
 	sleep(800)
 	send("^a")
 	sleep(800)
@@ -267,7 +275,7 @@ Func changeAccount(ByRef $acc)
 	send("^a")
 	sleep(800)
 	send("+a7789123")
-	sleep(800) 
+	sleep(800)
 	send("{tab}")
 	sleep(800)
 	send("{n}")
@@ -296,7 +304,7 @@ Func sendFriend()
 	sleep(2000)
 	send("{9}")
 	sleep(3000)
-	send("{0}")
+	send("{7}")
 	sleep(5000)
 	send("{e}")
 	sleep(1000)
@@ -396,16 +404,16 @@ Func guild(ByRef $wsh,ByRef $siW,ByRef $devAtk)
 	sleep(2000)
 	send("{g}")
 	sleep(2500)
-	send("{e}") ;;簽到確定	
+	send("{e}") ;;簽到確定
 	if $wsh > 0 Then
 		worship() ;;敬拜
 	EndIf
 	if $siW > 0 Then
 		signaWard() ;;簽到獎勵
-	EndIf	
+	EndIf
 	if $devAtk > 0 Then
 		devilAttack();;魔王攻城戰
-	EndIf		
+	EndIf
 	sleep(1800)
 	send("{esc}")
 	sleep(2000)
@@ -433,7 +441,7 @@ Func worship()
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
 	send("{k}")	;;敬拜
-	sleep(1500)	
+	sleep(1500)
 	send("{3}") ;;選公會長
 	sleep(800)
 	send("{y}")
@@ -442,12 +450,12 @@ Func worship()
 EndFunc
 
 Func devilAttack()
-;;魔王攻城戰	
+;;魔王攻城戰
 	MsgBox($MB_SYSTEMMODAL, "Title", "魔王攻城戰", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
-	send("{v}")	
+	send("{v}")
 	sleep(1000)
 	send("{space}")	;;進入魔王攻城按鈕
 	sleep(2000)
@@ -456,12 +464,12 @@ Func devilAttack()
 	sleep(1000)
 	send("{space}") ;;戰鬥開始
 	sleep(1000)
-	;;send("{e}")	
+	;;send("{e}")
 	sleep(50000)
 	MouseMove(200, 200, 1)
-	send("{space}")
+	send("{0}")
 	sleep(50000)
 	MouseMove(300, 300, 1)
-	send("{space}")
+	send("{0}")
 	sleep(50000)
 EndFunc
