@@ -144,7 +144,7 @@ Func HotKey_F5()
 	Local $h = 0
 	while $h < 8
 		send("{r}")
-		sleep(5000)
+		sleep(6000)
 		send("{space}")
 		sleep(25000)
 		send("{2}")
