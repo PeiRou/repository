@@ -3,7 +3,7 @@
 #include <MsgBoxConstants.au3>
 
 	;;帳號數量
-	Local $counti = 27
+	Local $counti = 21
 	;;帳號是否lock
 	Local $aArraylock[$counti] = [ _
 	  0 , 0 , 0 _
@@ -16,13 +16,13 @@
 	
 	;;帳號
 	Local $aArrayAc[$counti] = [ _
-	  "pump800511", "pumpk800511", "pum800511" _
-	, "phephe0513","s793156529" , "jeica0909" _
-	, "ma510909", "puck800511" , "pun800511" _
-	, "green79315", "jeica7799", "pumk800511" _
-	, "pub800511", "pud800511", "pue800511" _
-	, "phapha0513", "puk800511", "pup800511" _
-	, "pug800511", "westdoor1234", "puv800511"]
+	  "pump800511"	, "pumpk800511"	, "pum800511" _
+	, "phephe0513"	,"s793156529" 	, "jeica0909" _
+	, "ma510909"	, "puck800511" 	, "pun800511" _
+	, "green79315"	, "jeica7799"	, "pumk800511" _
+	, "pub800511"	, "pud800511"	, "pue800511" _
+	, "phapha0513"	, "puk800511"	, "pup800511" _
+	, "pug800511"	, "westdoor1234", "puv800511"]
 
 	;;等級是否到達航海
 	Local $aArrayLv[$counti] = [ _
