@@ -2,7 +2,8 @@
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
 
-	Local $counti = 26
+	;;帳號數量
+	Local $counti = 27
 	;;帳號是否lock
 	Local $aArraylock[$counti] = [ _
 	  0 , 0 , 0 _
@@ -11,7 +12,7 @@
 	, 0 , 0 , 0 _
 	, 0 , 0 , 0 _
 	, 0 , 0 , 0 _
-	, 0 , 0 ]
+	, 0 , 0 , 0 ]
 	
 	;;帳號
 	Local $aArrayAc[$counti] = [ _
@@ -21,7 +22,7 @@
 	, "green79315", "jeica7799", "pumk800511" _
 	, "pub800511", "pud800511", "pue800511" _
 	, "phapha0513", "puk800511", "pup800511" _
-	, "pug800511", "westdoor1234"]
+	, "pug800511", "westdoor1234", "puv800511"]
 
 	;;等級是否到達航海
 	Local $aArrayLv[$counti] = [ _
@@ -31,7 +32,7 @@
 	, 1 , 1 , 1 _
 	, 1 , 1 , 1 _
 	, 1 , 1 , 1 _
-	, 1 , 1 ]
+	, 1 , 1 , 0 ]
 
 	;;是否簽到公會
 	Local $aArrayGuild[$counti] = [ _
@@ -41,7 +42,7 @@
 	, 1 , 1 , 1 _
 	, 1 , 1 , 1 _
 	, 1 , 1 , 1 _
-	, 1 , 1 ]
+	, 1 , 1 , 0 ]
 
 Local $i = 0
 
