@@ -1,33 +1,47 @@
 #include "position.au3"
 #include <Date.au3>
 #include <MsgBoxConstants.au3>
-	;;¦B«Ê±b¸¹:, "green79315", "jeica7799", "pumk800511"
-	;;         , "pub800511", "pud800511", "pue800511"
-	;;         , "phapha0513", "puk800511", "pup800511"
-	;;		   , "pug800511", "westdoor1234"
-	;;±b¸¹
-	Local $aArrayAc[9] = [ _
+
+	Local $counti = 26
+	;;å¸³è™Ÿæ˜¯å¦lock
+	Local $aArraylock[$counti] = [ _
+	  0 , 0 , 0 _
+	, 0 , 1 , 0 _
+	, 0 , 0 , 0 _
+	, 0 , 0 , 0 _
+	, 0 , 0 , 0 _
+	, 0 , 0 , 0 _
+	, 0 , 0 ]
+	
+	;;å¸³è™Ÿ
+	Local $aArrayAc[$counti] = [ _
 	  "pump800511", "pumpk800511", "pum800511" _
-	, "phephe0513","s793156529" _
-	, "jeica0909" , "ma510909" _
-	, "puck800511" _
-	, "pun800511"]
+	, "phephe0513","s793156529" , "jeica0909" _
+	, "ma510909", "puck800511" , "pun800511" _
+	, "green79315", "jeica7799", "pumk800511" _
+	, "pub800511", "pud800511", "pue800511" _
+	, "phapha0513", "puk800511", "pup800511" _
+	, "pug800511", "westdoor1234"]
 
-	;;µ¥¯Å¬O§_¨ì¹F¯è®ü
-	Local $aArrayLv[9] = [ _
-	  1, 1, 1 _
-	, 1, 1 _
-	, 1, 0 _
-	, 1 _
-	, 1]
+	;;ç­‰ç´šæ˜¯å¦åˆ°é”èˆªæµ·
+	Local $aArrayLv[$counti] = [ _
+	  1 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 0 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 1 , 1 ]
 
-	;;¬O§_Ã±¨ì¤½·|
-	Local $aArrayGuild[9] = [ _
-	  1, 1, 1 _
-	, 1, 1 _
-	, 1, 1 _
-	, 1 _
-	, 1]
+	;;æ˜¯å¦ç°½åˆ°å…¬æœƒ
+	Local $aArrayGuild[$counti] = [ _
+	  1 , 1 , 1 _
+	, 1 , 1 , 0 _
+	, 1 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 1 , 1 , 1 _
+	, 1 , 1 ]
 
 Local $i = 0
 
@@ -47,9 +61,9 @@ EndFunc ;==> _Exit()
 Func HotKey_F8()
 
 	Local $j = 0
-	while $j < 9
-		control(1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;Á`±±¨î
-		;;control(¬O§_­nµn±b¸¹,±b¸¹,¬O§_­nÂI¤½·|,¬O§_­n¯è®ü)
+	while $j < $counti
+		control(1,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;ç¸½æ§åˆ¶
+		;;control(æ˜¯å¦è¦ç™»å¸³è™Ÿ,å¸³è™Ÿ,æ˜¯å¦è¦é»å…¬æœƒ,æ˜¯å¦è¦èˆªæµ·)
 		$j = $j + 1
 	WEnd
 	_Exit()
@@ -58,7 +72,7 @@ EndFunc
 Func HotKey_F9()
 	Local $j = 1
 	while $j < 2
-		control(0,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;Á`±±¨î
+		control(0,$aArrayAc[$j],$aArrayGuild[$j],$aArrayLv[$j]) ;;ç¸½æ§åˆ¶
 		$j = $j + 1
 	WEnd
 	_Exit()
@@ -67,7 +81,7 @@ EndFunc
 Func HotKey_F10()
 	Local $j = 1
 	while $j < 2
-		control(0,0,1,$aArrayLv[$j]) ;;Á`±±¨î
+		control(0,0,1,$aArrayLv[$j]) ;;ç¸½æ§åˆ¶
 		$j = $j + 1
 	WEnd
 	_Exit()
@@ -76,61 +90,61 @@ Func HotKey_F10()
  Func HotKey_F7()
 	Local $j = 1
 	while $j < 2
-		control(0,0,0,1) ;;Á`±±¨î
+		control(0,0,0,1) ;;ç¸½æ§åˆ¶
 		$j = $j + 1
 	WEnd
 	_Exit()
 EndFunc
 
-;;­Y¦³»İ­nµ¹°Ñ¼Æªº,1=true,0=false
+;;è‹¥æœ‰éœ€è¦çµ¦åƒæ•¸çš„,1=true,0=false
 ;;Func control(ByRef $isLogin,ByRef $isTempActivity,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
 Func control(ByRef $isLogin,ByRef $acc,ByRef $isGuild,ByRef $isVsTral)
-;;Á`±±¨î
+;;ç¸½æ§åˆ¶
 
 	if $isLogin > 0 Then
 		changeAccount($acc)
 	EndIf
-	;;µn±b¸¹
+	;;ç™»å¸³è™Ÿ
 
 	; if $isTempActivity >0 Then
 		; tempActivity()
 	; EndIf
-	; ;;µu´Á¼È®É¬¡°Ê
+	; ;;çŸ­æœŸæš«æ™‚æ´»å‹•
 
 	if $isGuild > 0 Then
 		;;guild(1,1,0)
 		guild(1,1,1)
 	EndIf
-	;;¤½·|
-		;;°Ñ¼Æ1=·q«ô,
-		;;°Ñ¼Æ2=»â¨úÃ±¨ì¼úÀy,
-		;;°Ñ¼Æ3=Å]¤ı§ğ«°
+	;;å…¬æœƒ
+		;;åƒæ•¸1=æ•¬æ‹œ,
+		;;åƒæ•¸2=é ˜å–ç°½åˆ°çå‹µ,
+		;;åƒæ•¸3=é­”ç‹æ”»åŸ
 
 	if $isVsTral > 0 Then
 		;visitTravel()
 	EndIf
-	;;ªüº¸±ö´µ±´ÀI
+	;;é˜¿çˆ¾æ¢…æ–¯æ¢éšª
 
 	;shop()
-	;;°Ó©±
+	;;å•†åº—
 
 	;exchangeDiamond()
-	;;§I´«Æp¥Û
+	;;å…Œæ›é‘½çŸ³
 	sendFriend()
-	;;µo°e©¯¹B¯óµ¹ªB¤Í
+	;;ç™¼é€å¹¸é‹è‰çµ¦æœ‹å‹
 	thrownDice()
-	;;¥Ï»ë¤l
+	;;ç”©éª°å­
 	revMessage()
-	;;»â¨ú°T®§
+	;;é ˜å–è¨Šæ¯
 	;;mission()
-	;;¥ô°È
+	;;ä»»å‹™
 	;;logout()
-	;;°h¥Xµn¿ı
+	;;é€€å‡ºç™»éŒ„
 EndFunc
 
 Func tempActivity()
-;;µu´Á¼È®É¬¡°Ê
-	MsgBox($MB_SYSTEMMODAL, "Title", "¼È®Éµu´Á¬¡°Ê", 0.5)
+;;çŸ­æœŸæš«æ™‚æ´»å‹•
+	MsgBox($MB_SYSTEMMODAL, "Title", "æš«æ™‚çŸ­æœŸæ´»å‹•", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(3000)
@@ -150,8 +164,8 @@ Func tempActivity()
 EndFunc
 
 Func exchangeDiamond()
-;;§I´«Æp¥Û
-	MsgBox($MB_SYSTEMMODAL, "Title", "§I´«Æp¥Û", 0.5)
+;;å…Œæ›é‘½çŸ³
+	MsgBox($MB_SYSTEMMODAL, "Title", "å…Œæ›é‘½çŸ³", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	;;send("{space}")
@@ -174,8 +188,8 @@ Func exchangeDiamond()
 EndFunc
 
 Func shop()
-;;°Ó©±
-	MsgBox($MB_SYSTEMMODAL, "Title", "°Ó©±", 0.5)
+;;å•†åº—
+	MsgBox($MB_SYSTEMMODAL, "Title", "å•†åº—", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(4500)
@@ -193,8 +207,8 @@ Func shop()
 EndFunc
 
 Func visitTravel()
-;;ªüº¸±ö´µ±´ÀI
-	MsgBox($MB_SYSTEMMODAL, "Title", "ªüº¸±ö´µ±´ÀI", 0.5)
+;;é˜¿çˆ¾æ¢…æ–¯æ¢éšª
+	MsgBox($MB_SYSTEMMODAL, "Title", "é˜¿çˆ¾æ¢…æ–¯æ¢éšª", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(800)
@@ -202,37 +216,37 @@ Func visitTravel()
 	sleep(1500)
 	send("{s}")
 	sleep(2000)
-	vsTraCycle("¥ª¤W¨¤","{2}") ;;¥ª¤W¨¤
-	vsTraCycle("¥k¤W¨¤","{3}") ;;¥k¤W¨¤
-	vsTraCycle("¥ª¤U¨¤","{c}") ;;¥ª¤U¨¤
-	vsTraCycle("¥k¤U¨¤","{t}") ;;¥k¤U¨¤
+	vsTraCycle("å·¦ä¸Šè§’","{2}") ;;å·¦ä¸Šè§’
+	vsTraCycle("å³ä¸Šè§’","{3}") ;;å³ä¸Šè§’
+	vsTraCycle("å·¦ä¸‹è§’","{c}") ;;å·¦ä¸‹è§’
+	vsTraCycle("å³ä¸‹è§’","{t}") ;;å³ä¸‹è§’
 	send("{esc}")
 	sleep(1000)
 	send("{esc}")
 EndFunc
 
 Func vsTraCycle(ByRef $showText,ByRef $posit)
-;;±´ÀI¤@­Ó´`Àô
+;;æ¢éšªä¸€å€‹å¾ªç’°
 	MsgBox($MB_SYSTEMMODAL, "Title", $showText, 0.5)
 	sleep(800)
 	;MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
 	send($posit)
 	sleep(3000)
-	send("{o}") ;;±´ÀI¼úÀy½T»{
+	send("{o}") ;;æ¢éšªçå‹µç¢ºèª
 	sleep(800)
 	send($posit)
 	sleep(800)
 	send("{x}")
 	sleep(800)
 	send("{v}")
-	send("{e}") ;;¨S¦³¤»¬Pªº±´ÀI
+	send("{e}") ;;æ²’æœ‰å…­æ˜Ÿçš„æ¢éšª
 	sleep(1800)
 EndFunc
 
 Func thrownDice()
-;;¥Ï»ë¤l
-	MsgBox($MB_SYSTEMMODAL, "Title", "¥Ï»ë¤l", 0.5)
+;;ç”©éª°å­
+	MsgBox($MB_SYSTEMMODAL, "Title", "ç”©éª°å­", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
@@ -253,7 +267,7 @@ Func thrownDice()
 EndFunc
 
 Func logout()
-;;°h¥Xµn¿ı
+;;é€€å‡ºç™»éŒ„
 	sleep(800)
 	send("{U}")
 	sleep(500)
@@ -263,7 +277,7 @@ Func logout()
 EndFunc
 
 Func changeAccount(ByRef $acc)
-;;´«±b¸¹
+;;æ›å¸³è™Ÿ
 	send("{7}")
 	sleep(800)
 	send("^a")
@@ -281,7 +295,7 @@ Func changeAccount(ByRef $acc)
 	send("{n}")
 	sleep(4800)
 	send("{space}")
-	MsgBox($MB_SYSTEMMODAL, "Title", "µn¤J¦¨¥\", 0.5)
+	MsgBox($MB_SYSTEMMODAL, "Title", "ç™»å…¥æˆåŠŸ", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(18000)
@@ -297,8 +311,8 @@ Func changeAccount(ByRef $acc)
 EndFunc
 
 Func sendFriend()
-;;µo°e©¯¹B¯óµ¹ªB¤Í
-	MsgBox($MB_SYSTEMMODAL, "Title", "µo°e©¯¹B¯óµ¹ªB¤Í", 0.5)
+;;ç™¼é€å¹¸é‹è‰çµ¦æœ‹å‹
+	MsgBox($MB_SYSTEMMODAL, "Title", "ç™¼é€å¹¸é‹è‰çµ¦æœ‹å‹", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
@@ -314,8 +328,8 @@ Func sendFriend()
 EndFunc
 
 Func chkFriend()
-;;½T»{¦n¤Í
-	MsgBox($MB_SYSTEMMODAL, "Title", "½T»{¦n¤Í", 0.5)
+;;ç¢ºèªå¥½å‹
+	MsgBox($MB_SYSTEMMODAL, "Title", "ç¢ºèªå¥½å‹", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
@@ -328,8 +342,8 @@ Func chkFriend()
 EndFunc
 
 Func revMessage()
-;;»â¨ú°T®§
-	MsgBox($MB_SYSTEMMODAL, "Title", "»â¨ú°T®§", 0.5)
+;;é ˜å–è¨Šæ¯
+	MsgBox($MB_SYSTEMMODAL, "Title", "é ˜å–è¨Šæ¯", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
@@ -368,8 +382,8 @@ Func revMessage()
 EndFunc
 
 Func mission()
-;;¥ô°È
-	MsgBox($MB_SYSTEMMODAL, "Title", "¥ô°È", 0.5)
+;;ä»»å‹™
+	MsgBox($MB_SYSTEMMODAL, "Title", "ä»»å‹™", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
@@ -397,22 +411,22 @@ EndFunc
 
 
 Func guild(ByRef $wsh,ByRef $siW,ByRef $devAtk)
-;;¤½·|
-	MsgBox($MB_SYSTEMMODAL, "Title", "¤½·|", 0.5)
+;;å…¬æœƒ
+	MsgBox($MB_SYSTEMMODAL, "Title", "å…¬æœƒ", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
 	send("{g}")
 	sleep(2500)
-	send("{e}") ;;Ã±¨ì½T©w
+	send("{e}") ;;ç°½åˆ°ç¢ºå®š
 	if $wsh > 0 Then
-		worship() ;;·q«ô
+		worship() ;;æ•¬æ‹œ
 	EndIf
 	if $siW > 0 Then
-		signaWard() ;;Ã±¨ì¼úÀy
+		signaWard() ;;ç°½åˆ°çå‹µ
 	EndIf
 	if $devAtk > 0 Then
-		devilAttack();;Å]¤ı§ğ«°¾Ô
+		devilAttack();;é­”ç‹æ”»åŸæˆ°
 	EndIf
 	sleep(1800)
 	send("{esc}")
@@ -420,49 +434,49 @@ Func guild(ByRef $wsh,ByRef $siW,ByRef $devAtk)
 EndFunc
 
 Func signaWard()
-;;Ã±¨ì¼úÀy
-	MsgBox($MB_SYSTEMMODAL, "Title", "Ã±¨ì¼úÀy", 0.5)
+;;ç°½åˆ°çå‹µ
+	MsgBox($MB_SYSTEMMODAL, "Title", "ç°½åˆ°çå‹µ", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
-	send("{g}") ;;Ã±¨ì¼úÀy
+	send("{g}") ;;ç°½åˆ°çå‹µ
 	sleep(1000)
-	send("{v}") ;;»â¨ú¼úÀy
+	send("{v}") ;;é ˜å–çå‹µ
 	sleep(1000)
 	send("{e}")
 	sleep(1000)
-	send("{g}") ;;Ãö³¬Ã±¨ì¼úÀyªºµøµ¡
+	send("{g}") ;;é—œé–‰ç°½åˆ°çå‹µçš„è¦–çª—
 EndFunc
 
 Func worship()
-;;·q«ô
-	MsgBox($MB_SYSTEMMODAL, "Title", "·q«ô", 0.5)
+;;æ•¬æ‹œ
+	MsgBox($MB_SYSTEMMODAL, "Title", "æ•¬æ‹œ", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
-	send("{k}")	;;·q«ô
+	send("{k}")	;;æ•¬æ‹œ
 	sleep(1500)
-	send("{3}") ;;¿ï¤½·|ªø
+	send("{3}") ;;é¸å…¬æœƒé•·
 	sleep(800)
 	send("{y}")
 	sleep(4000)
-	send("{d}") ;;Ãö±¼·q«ôªºµøµ¡
+	send("{d}") ;;é—œæ‰æ•¬æ‹œçš„è¦–çª—
 EndFunc
 
 Func devilAttack()
-;;Å]¤ı§ğ«°¾Ô
-	MsgBox($MB_SYSTEMMODAL, "Title", "Å]¤ı§ğ«°¾Ô", 0.5)
+;;é­”ç‹æ”»åŸæˆ°
+	MsgBox($MB_SYSTEMMODAL, "Title", "é­”ç‹æ”»åŸæˆ°", 0.5)
 	sleep(800)
 	MouseClick($MOUSE_CLICK_LEFT, $x, $y, 1)
 	sleep(2000)
 	send("{v}")
 	sleep(1000)
-	send("{space}")	;;¶i¤JÅ]¤ı§ğ«°«ö¶s
+	send("{space}")	;;é€²å…¥é­”ç‹æ”»åŸæŒ‰éˆ•
 	sleep(2000)
 	send("{space}")
 	MouseMove(100, 100, 1)
 	sleep(1000)
-	send("{space}") ;;¾Ô°«¶}©l
+	send("{space}") ;;æˆ°é¬¥é–‹å§‹
 	sleep(1000)
 	;;send("{e}")
 	sleep(50000)
